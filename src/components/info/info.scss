@@ -1,0 +1,113 @@
+@use '../../scss/utils' as u;
+
+.container--info {
+	font-size: var(--fs-400);
+
+	@include u.breakpoint(sm) {
+		width: min(var(--max-width), 60% - (var(--padding) * 2));
+	}
+
+	article {
+		&.lead {
+			margin-bottom: 0.85rem;
+			text-align: center;
+
+			h2 {
+				margin-bottom: 1rem;
+			}
+
+			p {
+				line-height: 2;
+			}
+
+			@include u.breakpoint(md) {
+				text-align: left;
+
+				p {
+					max-width: 33ch;
+				}
+			}
+		}
+	}
+
+	ol {
+		list-style: none;
+		counter-reset: count;
+
+		li {
+			counter-increment: count;
+			margin-bottom: 2.5rem;
+
+			.item-wrapper {
+				display: grid;
+				align-items: center;
+				column-gap: 0.3rem;
+				grid-template-columns: min-content 1fr;
+
+				&::before {
+					content: '0' counter(count);
+					font-size: var(--fs-500);
+					font-weight: var(--fw-bld);
+					background-color: var(--clr-p-100);
+					color: var(--clr-n-400);
+					padding: 0.5em 1em;
+					border-radius: 50rem;
+					margin-right: 5px;
+					height: 100%;
+					display: flex;
+					align-items: center;
+				}
+
+				.title {
+					padding: 0.5em 0;
+					position: relative;
+					letter-spacing: -0.29px;
+					background-color: var(--clr-n-300);
+					box-shadow: 10rem 0 0 var(--clr-n-300);
+
+					&::before {
+						width: 60px;
+						height: 100%;
+						background-color: var(--clr-n-300);
+						position: absolute;
+						content: '';
+						top: 0;
+						left: -60px;
+						border-radius: 100rem 0 0 100rem;
+						z-index: -1;
+					}
+
+					@include u.breakpoint(md) {
+						background-color: transparent;
+						box-shadow: 0 0 0;
+
+						&::before {
+							display: none;
+						}
+					}
+				}
+
+				.body {
+					grid-column: 1 / -1;
+
+					@include u.breakpoint(lg) {
+						grid-column: 2 /-1;
+					}
+				}
+			}
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+
+			p {
+				margin-top: 1rem;
+				line-height: 2.1;
+			}
+		}
+	}
+
+	@include u.breakpoint(md) {
+		width: min(var(--max-width), 100% - (var(--padding) * 2));
+	}
+}

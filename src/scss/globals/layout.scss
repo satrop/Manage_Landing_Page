@@ -1,0 +1,156 @@
+@use '../utils' as u;
+
+html {
+	scroll-behavior: smooth;
+}
+
+// Using this as a fall back for Firefox not being able to use the :has selector yet
+#root {
+	overflow: hidden;
+}
+
+section {
+	position: relative;
+
+	&:has(.pill) {
+		overflow: hidden;
+	}
+}
+
+:root {
+	// p = Primary
+	--ff-p: 'Be Vietnam Pro', sans-serif;
+
+	--fw-reg: 400;
+	--fw-med: 400;
+	--fw-bld: 700;
+
+	--fs-200: 0.625rem;
+	--fs-300: 0.8125rem;
+	--fs-400: 0.875rem; //14
+	--fs-500: 1rem; // 16
+	--fs-600: 1.875rem;
+	--fs-700: 2.5rem;
+	--fs-800: 3.5rem;
+
+	--fs-body: var(--fs-500);
+	--fs-primary-heading: var(--fs-700);
+	--fs-secondary-heading: var(--fs-600);
+	--fs-tertiary-heading: var(--fs-500);
+	--fs-nav: var(--fs-500);
+	--fs-button: var(--fs-300);
+
+	--trans-dur: 0.3s ease-in-out;
+
+	@include u.breakpoint(lg) {
+		--fs-body: var(--fs-500);
+		--fs-primary-heading: var(--fs-800);
+		--fs-secondary-heading: var(--fs-700);
+		--fs-nav: var(--fs-300);
+	}
+}
+
+.skip-nav {
+	position: absolute;
+	text-align: center;
+	margin-inline: auto;
+	background-color: var(--clr-p-100);
+	width: auto;
+	margin-top: -3rem;
+	z-index: 200;
+	transition: margin-top var(--trans-dur);
+
+	&:focus {
+		margin-top: 7.5rem;
+	}
+}
+
+body {
+	font-family: var(--ff-p);
+	font-weight: var(--fw-reg);
+	font-size: var(--fs-body);
+	color: var(--clr-p-300);
+}
+
+h1,
+h2,
+h3 {
+	color: var(--clr-p-200);
+}
+
+h1 {
+	font-size: var(--fs-primary-heading);
+	line-height: 1.2;
+	text-align: center;
+
+	@include u.breakpoint(md) {
+		text-align: left;
+	}
+}
+
+h2,
+.h2 {
+	font-size: var(--fs-secondary-heading);
+	line-height: 1.4;
+}
+
+h3 {
+	font-size: var(--fs-tertiary-heading);
+}
+
+.container {
+	--max-width: 100%;
+	--padding: 1rem;
+	width: min(var(--max-width), 100% - (var(--padding) * 2));
+	margin-inline: auto;
+
+	@include u.breakpoint(lg) {
+		--max-width: 1140px;
+	}
+
+	&--two-columns {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@include u.breakpoint(md) {
+			width: min(var(--max-width), 100% - (var(--padding) * 2));
+			flex-direction: row;
+
+			article {
+				width: 50%;
+			}
+		}
+	}
+}
+
+section + section:not(:first-child) {
+	margin-top: var(--flow-spacer, 5.8125rem);
+
+	@include u.breakpoint(lg) {
+		margin-top: var(--flow-spacer, 7.5rem);
+	}
+}
+
+nav {
+	margin-bottom: var(--flow-spacer, 1rem);
+
+	@include u.breakpoint(lg) {
+		margin-bottom: var(--flow-spacer, 7.5rem);
+	}
+}
+
+:where(.flow :not(:first-child)) {
+	margin-top: var(--flow-spacer, 2em);
+}
+
+.background-color {
+	&--orange {
+		background-color: var(--clr-p-100);
+	}
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+}

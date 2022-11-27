@@ -1,0 +1,188 @@
+@use '../../scss/utils' as u;
+
+.fade {
+	position: fixed;
+	width: 100vw;
+	height: 90vh;
+	z-index: 90;
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: all var(--trans-dur);
+	background: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.6) 0%,
+		rgba(0, 0, 0, 0) 100%
+	);
+
+	&.active {
+		opacity: 1;
+		height: 100vh;
+	}
+}
+
+.main-logo {
+	padding: 0.5em;
+	margin-left: -0.5em;
+	border-style: dashed;
+	border-color: transparent;
+	transition: border-color var(--trans-dur);
+
+	svg path#text {
+		fill: var(--clr-p-200);
+		transition: fill var(--trans-dur);
+	}
+
+	&:hover {
+		svg path#text {
+			fill: var(--clr-p-100);
+		}
+	}
+
+	&:focus {
+		outline: none;
+		border-style: dashed;
+		border-color: var(--clr-p-100);
+	}
+}
+
+nav {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	z-index: 100;
+	margin-top: 45px;
+
+	ul {
+		width: calc(325px - 2.5rem);
+		position: absolute;
+		z-index: 110;
+		display: none;
+		opacity: 0;
+		background-color: var(--clr-n-500);
+		border-radius: 0.25rem;
+		left: 50%;
+		top: 0;
+		transform: translateX(-50%);
+		transition: all var(--trans-dur);
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		padding: 2.5rem;
+
+		li {
+			&:where(:not(:first-child)) {
+				margin-top: var(--li-gap, 1.5em);
+			}
+
+			a {
+				text-decoration: none;
+				color: var(--clr-p-200);
+				font-weight: var(--fw-bld);
+			}
+		}
+
+		&.block {
+			display: flex;
+		}
+
+		&.visible {
+			opacity: 1;
+			top: 70px;
+		}
+
+		@include u.breakpoint(lg) {
+			display: flex;
+			opacity: 1;
+			flex-direction: row;
+			align-items: center;
+			width: auto;
+			position: relative;
+			left: unset;
+			top: unset;
+			transform: unset;
+			background-color: transparent;
+			padding: 0;
+
+			li {
+				margin-top: 0;
+
+				&:first-of-type {
+					margin-left: 0;
+				}
+
+				&:last-of-type {
+					margin-right: 0;
+				}
+
+				a {
+					padding: 0.75em 1.5em;
+					border-style: dashed solid;
+					border-color: transparent;
+					font-size: var(--fs-300);
+					font-weight: var(--fw-med);
+					transition: all var(--trans-dur);
+
+					&:hover {
+						opacity: 0.5;
+					}
+
+					&:focus {
+						outline: none;
+						border-style: dashed solid;
+						border-color: var(--clr-p-100);
+					}
+				}
+			}
+		}
+	}
+
+	button {
+		padding: 0;
+		margin: 0;
+		background-color: transparent;
+		position: relative;
+		border: 0;
+
+		&.menu-trigger {
+			width: 30px;
+			height: 30px;
+
+			&.active {
+				.icon--burger {
+					display: none;
+				}
+			}
+
+			&:not(.active) {
+				.icon--close {
+					display: none;
+				}
+			}
+
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		@include u.breakpoint(lg) {
+			display: none;
+		}
+	}
+
+	.button {
+		display: none;
+
+		@include u.breakpoint(lg) {
+			&.button {
+				display: block;
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+@use '../../scss/utils' as u;
+
+.container--hero {
+	flex-direction: column-reverse;
+
+	.hero-image {
+		margin-inline: auto;
+	}
+
+	.lead p {
+		max-width: 33ch;
+		text-align: center;
+		margin-inline: auto;
+
+		@include u.breakpoint(md) {
+			text-align: left;
+			margin-inline: unset;
+		}
+	}
+
+	@include u.breakpoint(md) {
+		flex-direction: row;
+		.flex {
+			justify-content: flex-start;
+		}
+	}
+}
