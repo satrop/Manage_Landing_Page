@@ -52,7 +52,7 @@ const Footer = () => {
 							</g>
 						</svg>
 					</a>
-					<ul className="socials" aria-label="Social links">
+					<ul className="socials">
 						<li>
 							<a href="#nogo" aria-label="Facebook">
 								<svg width="20" height="20">

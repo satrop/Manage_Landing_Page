@@ -49,6 +49,7 @@ const Nav = () => {
 					</svg>
 				</a>
 				<ul
+					id="menu"
 					className={` ${isVisible ? 'visible' : ''} ${
 						isBlock ? 'block' : ''
 					} `}
