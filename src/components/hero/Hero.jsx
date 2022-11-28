@@ -4,7 +4,7 @@ import heroImg from '../../assets/img/illustration-intro.svg';
 
 const Hero = () => {
 	return (
-		<section>
+		<div className="tray">
 			<div className="container container--two-columns container--hero">
 				<article className="lead flow">
 					<h1>Bring everyone together to build better products.</h1>
@@ -27,7 +27,7 @@ const Hero = () => {
 					/>
 				</article>
 			</div>
-		</section>
+		</div>
 	);
 };
 

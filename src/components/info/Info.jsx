@@ -3,7 +3,7 @@ import DataInfo from '../dataInfo/DataInfo';
 
 const Info = () => {
 	return (
-		<section>
+		<div className="tray">
 			<div className="container container--two-columns container--info">
 				<article className="lead">
 					<h2>What's different about Manage?</h2>
@@ -19,7 +19,7 @@ const Info = () => {
 					</ol>
 				</article>
 			</div>
-		</section>
+		</div>
 	);
 };
 

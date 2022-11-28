@@ -9,7 +9,7 @@ html {
 	overflow: hidden;
 }
 
-section {
+.tray {
 	position: relative;
 
 	&:has(.pill) {
@@ -124,7 +124,7 @@ h3 {
 	}
 }
 
-section + section:not(:first-child) {
+.tray + .tray:not(:first-child) {
 	margin-top: var(--flow-spacer, 5.8125rem);
 
 	@include u.breakpoint(lg) {

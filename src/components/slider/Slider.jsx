@@ -8,7 +8,7 @@ import './slider.scss';
 
 const Slider = () => {
 	return (
-		<section className="swiper-container">
+		<div className="tray swiper-container">
 			<h2>What they've said</h2>
 			<Swiper
 				modules={[Pagination, A11y]}
@@ -47,7 +47,7 @@ const Slider = () => {
 					Get Started
 				</a>
 			</div>
-		</section>
+		</div>
 	);
 };
 

@@ -3,7 +3,7 @@ import './footerEyebrow.scss';
 
 const FooterEyebrow = () => {
 	return (
-		<section className="background-color--orange">
+		<div className="tray background-color--orange">
 			<div className="pill pill--sm" role="presentation"></div>
 			<div className="pill pill--sm" role="presentation"></div>
 			<div className="container container--footer-eyebrow">
@@ -12,7 +12,7 @@ const FooterEyebrow = () => {
 					Get Started
 				</a>
 			</div>
-		</section>
+		</div>
 	);
 };
 
