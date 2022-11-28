@@ -31,7 +31,7 @@ footer {
 		margin-inline: auto;
 		transform: scale(1.35);
 
-		svg path#text {
+		svg path#footer-text {
 			fill: var(--clr-n-500);
 			transition: fill var(--trans-dur);
 		}
@@ -39,7 +39,7 @@ footer {
 		&:hover,
 		&:focus {
 			outline: none;
-			svg path#text {
+			svg path#footer-text {
 				fill: var(--clr-p-100);
 			}
 		}
